@@ -1,5 +1,5 @@
+package BIF.SWE2.exam.interfaces;
 
-import BIF.SWE2.exam.interfaces.Car;
 import java.util.List;
 
 public interface CarDAL {
