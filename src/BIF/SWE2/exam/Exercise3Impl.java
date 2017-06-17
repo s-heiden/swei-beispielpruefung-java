@@ -49,10 +49,12 @@ public class Exercise3Impl implements Exercise3 {
     }
 
     @Override
-    public Object method1(int paramInt, String paramString, Object paramObject) {
+    public Object method1(int i, String str, Object obj) {
         return new FactoryImpl();
     }
 
+    // ****************************************************************************************************************
+    // Nicht benoetigt!!
     @Override
     public Object method2(int paramInt, String paramString, Object paramObject) {
         return null;

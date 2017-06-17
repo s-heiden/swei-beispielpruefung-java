@@ -101,15 +101,17 @@ public class Exercise2Impl implements Exercise2 {
     }
 
     @Override
-    public Object method1(int paramInt, String paramString, Object paramObject) {
+    public Object method1(int i, String str, Object obj) {
         return new CarDALImpl();
     }
 
     @Override
-    public Object method2(int paramInt, String paramString, Object paramObject) {
+    public Object method2(int i, String str, Object obj) {
         return new CarBLImpl();
     }
 
+    // ****************************************************************************************************************
+    // Nicht benoetigt!!
     @Override
     public Object method3(int paramInt, String paramString, Object paramObject) {
         return null;
