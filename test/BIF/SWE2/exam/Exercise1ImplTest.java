@@ -1,4 +1,4 @@
-package swei.beispielpruefung.java;
+package BIF.SWE2.exam;
 
 import BIF.SWE2.exam.Exercise1Impl;
 import BIF.SWE2.exam.interfaces.Car;

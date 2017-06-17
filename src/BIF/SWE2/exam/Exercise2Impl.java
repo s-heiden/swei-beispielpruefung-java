@@ -9,28 +9,37 @@ public class Exercise2Impl implements Exercise2 {
     public class CarDALImpl implements CarDAL {
 
         List<Car> cars = new ArrayList<>();
-        
+
         @Override
         public List<Car> GetCars(String brand, String model) {
             List<Car> result = new ArrayList<>();
-            
-            for (Car c : cars){
-                boolean brandMatches = false;
-                boolean modelMatches = false;
-                
-                if (c.getBrand().toLowerCase().equals(brand.toLowerCase())){
-                    brandMatches = true;
+
+            for (Car c : cars) {
+                boolean ignoreBrand = false;
+                boolean ignoreModel = false;
+                boolean brandMatched = false;
+                boolean modelMatched = false;
+
+                if (brand == null || brand.equals("")) {
+                    ignoreBrand = true;
                 }
-                
-                if (c.getModel().toLowerCase().equals(model.toLowerCase())){
-                    modelMatches = true;
+
+                if (model == null || model.equals("")) {
+                    ignoreModel = true;
                 }
-                
-                if (brandMatches && modelMatches) {
+
+                if (ignoreBrand || c.getBrand().toLowerCase().contains(brand.toLowerCase())) {
+                    brandMatched = true;
+                }
+
+                if (ignoreModel || c.getModel().toLowerCase().contains(model.toLowerCase())) {
+                    modelMatched = true;
+                }
+
+                if (brandMatched && modelMatched) {
                     result.add(c);
-                }        
+                }
             }
-            
             return result;
         }
 
@@ -43,41 +52,62 @@ public class Exercise2Impl implements Exercise2 {
 
     public class CarBLImpl implements CarBL {
 
+        private CarDAL carDAL;
+        private String brand;
+
         @Override
         public void setDAL(CarDAL dal) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            this.carDAL = dal;
         }
 
         @Override
         public void setCurrentBrand(String brand) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            this.brand = brand;
         }
 
         @Override
         public List<Car> getCars() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if (brand == null) {
+                throw new IllegalStateException("No brand is set.");
+            }
+            List<Car> cars = carDAL.GetCars(brand, null);
+            return cars;
         }
 
         @Override
         public Car getCar(String model) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if (brand == null) {
+                throw new IllegalStateException("No brand is set.");
+            }
+            List<Car> cars = carDAL.GetCars(brand, model);
+            if (cars.size() == 0) {
+                return null;
+            } else {
+                return cars.get(0);
+            }
         }
 
         @Override
         public void saveCar(Car c) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if (brand == null) {
+                throw new IllegalStateException("No brand is set.");
+            }
+            if (!c.getBrand().equalsIgnoreCase(brand)) {
+                throw new IllegalStateException("The car does not belong to the current brand.");
+            }
+            carDAL.SaveCar(c);
         }
 
     }
 
     @Override
     public Object method1(int paramInt, String paramString, Object paramObject) {
-        return null;
+        return new CarDALImpl();
     }
 
     @Override
     public Object method2(int paramInt, String paramString, Object paramObject) {
-        return null;
+        return new CarBLImpl();
     }
 
     @Override
