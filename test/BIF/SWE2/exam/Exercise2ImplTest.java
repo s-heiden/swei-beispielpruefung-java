@@ -64,6 +64,7 @@ public class Exercise2ImplTest {
     public void test_3_2() {
         System.out.println("test_3_2");
         Exercise2Impl instance = new Exercise2Impl();
+        boolean thrown;
 
         CarDAL carDAL = (CarDAL) instance.method1(0, null, null);
         Car[] cars = { 
@@ -83,8 +84,7 @@ public class Exercise2ImplTest {
         carBL.setDAL(carDAL);
         
         // test if an exception is thrown by getCars, getCar, and saveCar if no brand is set
-        boolean thrown = false;
-
+        thrown = false;
         try {
           carBL.getCars();
         } catch (Exception e) {
@@ -92,6 +92,7 @@ public class Exercise2ImplTest {
         }
         assertTrue(thrown);
         
+        thrown = false;
         try {
           carBL.getCar("Vectra");
         } catch (Exception e) {
@@ -99,6 +100,7 @@ public class Exercise2ImplTest {
         }
         assertTrue(thrown);
         
+        thrown = false;
         try {
           carBL.saveCar(new Car("Audi", "A1", 100));
         } catch (Exception e) {
