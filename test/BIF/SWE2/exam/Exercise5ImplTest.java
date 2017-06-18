@@ -89,7 +89,7 @@ public class Exercise5ImplTest {
 
         List<Car> result = (List<Car>) instance.method2(0, null, Arrays.asList(input));
 
-        assertEquals(result.size(), 3);
+        assertEquals(3, result.size());
 
         for (int i = 0; i < result.size(); i++) {
             if (!result.get(i).getBrand().equals(expected[i].getBrand())
@@ -112,7 +112,7 @@ public class Exercise5ImplTest {
 
         List<Car> result2 = (List<Car>) instance.method2(0, null, Arrays.asList(input2));
 
-        assertEquals(result2.size(), 0);
+        assertEquals(0, result2.size());
 
     }
 
@@ -133,7 +133,7 @@ public class Exercise5ImplTest {
             new Car("Audi", "A3", 100)
         };
         Integer count = (Integer) instance.method3(0, null, Arrays.asList(input));
-        assertEquals(count.intValue(), 3);
+        assertEquals(3, count.intValue());
     }
 
 }

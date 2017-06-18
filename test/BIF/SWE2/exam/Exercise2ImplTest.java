@@ -27,26 +27,26 @@ public class Exercise2ImplTest {
             new Car("Fiat", "Cinquecento", 45)
         };
         for (Car c : cars) {
-            carDAL.SaveCar(c);
+            carDAL.saveCar(c);
         }
 
-        List<Car> ret1 = carDAL.GetCars("Audi", null);
-        assertEquals(ret1.size(), 2);
+        List<Car> ret1 = carDAL.getCars("Audi", null);
+        assertEquals(2, ret1.size());
 
-        List<Car> ret2 = carDAL.GetCars("Opel", "");
-        assertEquals(ret2.size(), 1);
+        List<Car> ret2 = carDAL.getCars("Opel", "");
+        assertEquals(1, ret2.size());
 
-        List<Car> ret3 = carDAL.GetCars(null, "A3");
-        assertEquals(ret3.size(), 1);
+        List<Car> ret3 = carDAL.getCars(null, "A3");
+        assertEquals(1, ret3.size());
 
-        List<Car> ret4 = carDAL.GetCars("", "A3");
-        assertEquals(ret4.size(), 1);
+        List<Car> ret4 = carDAL.getCars("", "A3");
+        assertEquals(1, ret4.size());
 
-        List<Car> ret5 = carDAL.GetCars("Fiat", "Ka");
-        assertEquals(ret5.size(), 0);
+        List<Car> ret5 = carDAL.getCars("Fiat", "Ka");
+        assertEquals(0, ret5.size());
 
-        List<Car> ret6 = carDAL.GetCars("Opel", "Vectra");
-        assertEquals(ret6.size(), 1);
+        List<Car> ret6 = carDAL.getCars("Opel", "Vectra");
+        assertEquals(1, ret6.size());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class Exercise2ImplTest {
 
         };
         for (Car c : cars) {
-            carDAL.SaveCar(c);
+            carDAL.saveCar(c);
         }
 
         CarBL carBL = (CarBL) instance.method2(0, null, null);
@@ -109,12 +109,12 @@ public class Exercise2ImplTest {
 
         // test if correct car/cars is returned by getCars() and getCar(String model)
         carBL.setCurrentBrand("Audi");
-        assertEquals(carBL.getCars().size(), 2);
-        assertEquals(carBL.getCar("R8").getHorsePower(), 360);
+        assertEquals(2, carBL.getCars().size());
+        assertEquals(360, carBL.getCar("R8").getHorsePower());
 
         // test if an empty List<Car> is returned if we search for a non existing brand in getCars()
         carBL.setCurrentBrand("Peugeot");
-        assertEquals(carBL.getCars().size(), 0);
+        assertEquals(0, carBL.getCars().size());
 
         // test if null is returned by getCar(String model) if no such model is saved for current brand
         carBL.setCurrentBrand("Peugeot");
@@ -123,9 +123,9 @@ public class Exercise2ImplTest {
         // test if cars can be saved and found again
         carBL.setCurrentBrand("VW");
         carBL.saveCar(new Car("VW", "Golf 2", 65));
-        assertEquals(carBL.getCar("Golf 2").getBrand(), "VW");
-        assertEquals(carBL.getCar("Golf 2").getModel(), "Golf 2");
-        assertEquals(carBL.getCar("Golf 2").getHorsePower(), 65);
+        assertEquals("VW", carBL.getCar("Golf 2").getBrand());
+        assertEquals("Golf 2", carBL.getCar("Golf 2").getModel());
+        assertEquals(65, carBL.getCar("Golf 2").getHorsePower());
 
     }
 
