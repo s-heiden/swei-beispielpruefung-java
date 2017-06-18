@@ -17,19 +17,18 @@ public class Exercise3Impl implements Exercise3 {
                     throw new IllegalArgumentException("An invalid type integer was provided");
             }
         }
-
     }
 
     public class FileStore implements Store {
 
         @Override
-        public Object Load(int d) {
+        public Object load(int d) {
             System.out.println("Performing Load");
             return null;
         }
 
         @Override
-        public void Save(Object obj) {
+        public void save(Object obj) {
             System.out.println("Performing Save");
         }
     }
@@ -37,13 +36,13 @@ public class Exercise3Impl implements Exercise3 {
     public class MemoryStore implements Store {
 
         @Override
-        public Object Load(int d) {
+        public Object load(int d) {
             System.out.println("Performing Load");
             return null;
         }
 
         @Override
-        public void Save(Object obj) {
+        public void save(Object obj) {
             System.out.println("Performing Save");
         }
     }

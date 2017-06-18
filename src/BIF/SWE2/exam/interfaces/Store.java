@@ -2,7 +2,7 @@ package BIF.SWE2.exam.interfaces;
 
 public interface Store {
 
-    Object Load(int d);
+    Object load(int d);
 
-    void Save(Object obj);
+    void save(Object obj);
 }
