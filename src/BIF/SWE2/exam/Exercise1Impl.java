@@ -18,7 +18,7 @@ public class Exercise1Impl implements Exercise1 {
 
         private Car car;
 
-        private CarPresentationModelImpl(Car car) {
+        public CarPresentationModelImpl(Car car) {
             this.car = car;
         }
 
@@ -41,23 +41,18 @@ public class Exercise1Impl implements Exercise1 {
         public String getPowerClass() {
             if (getHorsePower() <= 50) {
                 return "schwach";
-            } else if (getHorsePower() > 50 && getHorsePower() < 100) {
+            } else if (getHorsePower() < 100) {
                 return "normal";
-            } else {
-                return "stark";
-            }
+            } 
+            return "stark";
         }
 
         public boolean isValid() {
-            if (getHorsePower() <= 0
-                    || getBrand().equals("")
-                    || getModel().equals("")
+            return !(getHorsePower() <= 0
+                    || getBrand().isEmpty()
+                    || getModel().isEmpty()
                     || getModel() == null
-                    || getBrand() == null) {
-                return false;
-            } else {
-                return true;
-            }
+                    || getBrand() == null);
         }
     }
 

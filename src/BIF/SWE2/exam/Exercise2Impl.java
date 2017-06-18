@@ -11,7 +11,7 @@ public class Exercise2Impl implements Exercise2 {
         List<Car> cars = new ArrayList<>();
 
         @Override
-        public List<Car> GetCars(String brand, String model) {
+        public List<Car> getCars(String brand, String model) {
             List<Car> result = new ArrayList<>();
 
             for (Car c : cars) {
@@ -44,7 +44,7 @@ public class Exercise2Impl implements Exercise2 {
         }
 
         @Override
-        public void SaveCar(Car c) {
+        public void saveCar(Car c) {
             cars.add(c);
         }
 
@@ -70,7 +70,7 @@ public class Exercise2Impl implements Exercise2 {
             if (brand == null) {
                 throw new IllegalStateException("No brand is set.");
             }
-            List<Car> cars = carDAL.GetCars(brand, null);
+            List<Car> cars = carDAL.getCars(brand, null);
             return cars;
         }
 
@@ -79,7 +79,7 @@ public class Exercise2Impl implements Exercise2 {
             if (brand == null) {
                 throw new IllegalStateException("No brand is set.");
             }
-            List<Car> cars = carDAL.GetCars(brand, model);
+            List<Car> cars = carDAL.getCars(brand, model);
             if (cars.size() == 0) {
                 return null;
             } else {
@@ -95,7 +95,7 @@ public class Exercise2Impl implements Exercise2 {
             if (!c.getBrand().equalsIgnoreCase(brand)) {
                 throw new IllegalStateException("The car does not belong to the current brand.");
             }
-            carDAL.SaveCar(c);
+            carDAL.saveCar(c);
         }
 
     }
