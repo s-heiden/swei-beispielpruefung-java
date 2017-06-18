@@ -66,7 +66,7 @@ public class Exercise2Impl implements Exercise2 {
         }
 
         @Override
-        public List<Car> getCars() {
+        public List<Car> getCars() throws IllegalArgumentException {
             if (brand == null) {
                 throw new IllegalStateException("No brand is set.");
             }
@@ -75,7 +75,7 @@ public class Exercise2Impl implements Exercise2 {
         }
 
         @Override
-        public Car getCar(String model) {
+        public Car getCar(String model) throws IllegalStateException {
             if (brand == null) {
                 throw new IllegalStateException("No brand is set.");
             }
@@ -88,7 +88,7 @@ public class Exercise2Impl implements Exercise2 {
         }
 
         @Override
-        public void saveCar(Car c) {
+        public void saveCar(Car c) throws IllegalStateException {
             if (brand == null) {
                 throw new IllegalStateException("No brand is set.");
             }

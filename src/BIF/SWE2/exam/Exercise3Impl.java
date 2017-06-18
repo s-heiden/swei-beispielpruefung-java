@@ -7,7 +7,7 @@ public class Exercise3Impl implements Exercise3 {
     public class FactoryImpl implements Factory {
 
         @Override
-        public Object create(int type) {
+        public Object create(int type) throws IllegalArgumentException {
             switch (type) {
                 case 1:
                     return new FileStore();
